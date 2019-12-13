@@ -1,0 +1,135 @@
+[colors]
+background = #262626
+foreground = #af87d7
+foreground-dim = #7c4d99
+alert = #cd1dd3
+
+[bar/main]
+monitor = ${env:MONITOR:HDMI-1}
+
+background = ${colors.background}
+foreground = ${colors.foreground-dim}
+
+height = 35
+padding-right = 1
+module-margin = 1
+
+font-0 = DejaVuSansMono Nerd Font:pixelsize=18;5
+
+modules-left = bspwm
+modules-center = 
+modules-right = spotify wlan volume battery date
+
+;tray-position = right
+;tray-padding = 2
+;tray-background = #0063ff
+
+wm-restack = bspwm
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %name%
+label-focused-foreground = ${colors.foreground}
+label-focused-background = ${colors.background}
+label-focused-padding = 1
+
+label-occupied = %name%
+label-occupied-padding = 1
+
+label-urgent = %name%!
+label-urgent-foreground = ${colors.background}
+label-urgent-background = ${colors.foreground}
+label-urgent-padding = 1
+
+label-empty = 
+
+;label-separator = |
+
+[module/wlan]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+label-connected = %essid%
+label-connected-foreground = ${colors.foreground} 
+
+format-disconnected = <label-disconnected>
+label-disconnected = 睊:(
+label-disconnected-foreground = ${colors.foreground}
+
+ramp-signal-0 = 
+ramp-signal-foreground = ${colors.foreground}
+
+[module/volume]
+type=custom/script
+
+interval = 1
+
+label = %output%
+label-foreground = ${colors.foreground}
+
+exec = ~/.scripts/pavolume
+click-right = exec pavucontrol
+click-left = ~/.scripts/pavolume --togmute
+scroll-up = ~/.scripts/pavolume --up
+scroll-down = ~/.scripts/pavolume --down
+
+[module/date]
+type = internal/date
+;interval = 5
+
+date = "%H:%M:%S"
+date-alt = "%a, %B %d %H:%M:%S"
+
+label = %date%
+label-foreground = ${colors.foreground}
+
+[module/battery]
+type = internal/battery
+
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+
+label-charging-foreground = ${colors.foreground}
+label-discharging-foreground = ${colors.foreground}
+label-full-foreground = ${colors.foreground}
+
+ramp-capacity-foreground = ${colors.foreground}
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-foreground = ${colors.foreground}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-framerate = 750
+
+[module/spotify]
+type = custom/script
+
+interval = 1
+
+exec = ~/.scripts/spotify --output
+
+label = %output%
+label-foreground = ${colors.foreground}
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+

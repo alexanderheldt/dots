@@ -1,0 +1,4 @@
+#! /bin/bash
+sudo systemctl start systemd-resolved.service
+sudo openvpn --config $HOME/.openvpn/work.ovpn
+
