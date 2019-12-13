@@ -126,6 +126,7 @@ super + alt + {Left,Down,Right}
 super + Print
     flameshot gui
 
+# Lock screen
 super + x
-    ~./scripts/spotify --pause; \
+    ~/.scripts/spotify --pause; \
     slock
