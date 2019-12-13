@@ -1,0 +1,45 @@
+#!/bin/sh
+
+output() {
+  STATUS=$(playerctl -p spotify status 2>&1)
+
+  if [ "$STATUS" = "No players found" ]; then
+    echo " "
+  else
+    TITLE=$(playerctl -p spotify metadata xesam:title)
+    ARTIST=$(playerctl -p spotify metadata xesam:artist)
+
+    case "$STATUS" in
+      "Playing")
+        echo "  $TITLE - $ARTIST"
+        ;;
+       "Paused")
+         echo "  $TITLE - $ARTIST"
+         ;;
+       *)
+         echo " "
+	 ;;
+    esac
+  fi
+}
+
+case "$1" in
+  --play)
+    playerctl -p spotify play
+    ;;
+  --pause)
+    playerctl -p spotify pause
+    ;;
+  --play-pause)
+    playerctl -p spotify play-pause
+    ;;
+  --prev)
+    playerctl -p spotify previous
+    ;;
+  --next)
+    playerctl -p spotify next
+    ;;
+  --output)
+    output
+    ;;
+esac

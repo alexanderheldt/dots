@@ -1,0 +1,12 @@
+[user]
+    name = Alexander Heldt
+    email = me@alexanderheldt.se
+
+[core]
+    editor = "nvim"
+
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+
+[includeIf "gitdir=~/code/work/nent/"]
+    path = ~/code/work/nent/.gitconfig

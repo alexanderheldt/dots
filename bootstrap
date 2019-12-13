@@ -1,0 +1,23 @@
+#! /bin/bash
+
+dots=(
+    .config
+    .screenlayout
+    .scripts
+    .Xresources
+    .xinitrc
+    .gitconfig
+    .tmux.conf
+    .zshrc
+)
+
+for d in ${dots[*]}; do
+    target=$HOME/$d
+
+    if [ ! -L "$target" ]; then
+        ln -s $PWD/$d $target
+    else
+        echo "symlink for $target already exists"
+    fi
+done
+
