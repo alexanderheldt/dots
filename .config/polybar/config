@@ -5,7 +5,7 @@ foreground-dim = #7c4d99
 alert = #cd1dd3
 
 [bar/main]
-monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:eDP-1}
 
 background = ${colors.background}
 foreground = ${colors.foreground-dim}
