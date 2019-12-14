@@ -9,4 +9,5 @@ flameshot &
 redshift &
 
 ~/.scripts/bar &
+
 exec bspwm
