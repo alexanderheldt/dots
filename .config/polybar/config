@@ -18,7 +18,7 @@ font-0 = DejaVuSansMono Nerd Font:pixelsize=18;5
 
 modules-left = bspwm
 modules-center = 
-modules-right = spotify wlan volume battery date
+modules-right = spotify bluetooth volume wlan battery date
 
 ;tray-position = right
 ;tray-padding = 2
@@ -114,6 +114,18 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-framerate = 750
+
+[module/bluetooth]
+type = custom/script
+
+interval = 1
+
+exec = ~/.scripts/bluetooth --output
+
+click-right = ~/.scripts/bluetooth --toggle 
+
+label = %output%
+label-foreground = ${colors.foreground}
 
 [module/spotify]
 type = custom/script
