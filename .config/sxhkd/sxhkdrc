@@ -122,9 +122,17 @@ XF86MonBrightness{Up,Down}
 super + alt + {Left,Down,Right}
      ~/.scripts/spotify --{prev,play-pause,next}
 
-# Print screen
+#
+# Screenshot
+#
 super + Print
-    flameshot gui
+    ~/.scripts/screenshot --entire-screen
+
+super + shift + Print
+    ~/.scripts/screenshot --select-window
+
+super + ctrl + shift + Print
+    ~/.scripts/screenshot --select-area
 
 # Lock screen
 super + x
