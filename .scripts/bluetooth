@@ -1,0 +1,59 @@
+#!/bin/bash
+# inspired by https://github.com/polybar/polybar-scripts/tree/master/polybar-scripts/system-bluetooth-bluetoothctl
+
+output() {
+    OUTPUT=""
+
+    POWERED_ON=$(bluetoothctl show | grep "Powered: yes")
+    if [ -z "$POWERED_ON" ]; then
+        ICON=""
+    else
+        ICON=""
+
+        PAIRED_DEVICES=$(bluetoothctl paired-devices | grep Device | cut -d ' ' -f 2)
+
+        for d in ${PAIRED_DEVICES[*]}; do
+            DEVICE_INFO=$(bluetoothctl info "$d")
+            DEVICE_CONNECTED=$(echo $DEVICE_INFO | grep "Connected: yes")
+
+            if [ ! -z "$DEVICE_CONNECTED" ]; then
+                ICON=""
+                DEVICE_ALIAS=$(echo "$DEVICE_INFO" | grep "Alias" | cut -d ' ' -f 2-)
+                OUTPUT="$OUTPUT $DEVICE_ALIAS"
+            fi
+        done
+    fi
+
+    echo "$ICON$OUTPUT"
+}
+
+toggle() {
+    POWERED_ON=$(bluetoothctl show | grep "Powered: yes")
+    if [ -z "$POWERED_ON" ]; then
+        bluetoothctl power on >> /dev/null
+        sleep 1
+
+        PAIRED_DEVICES=$(bluetoothctl paired-devices | grep Device | cut -d ' ' -f 2)
+
+        for d in ${PAIRED_DEVICES[*]}; do
+            bluetoothctl connect $d >> /dev/null
+        done
+    else
+        PAIRED_DEVICES=$(bluetoothctl paired-devices | grep Device | cut -d ' ' -f 2)
+
+        for d in ${PAIRED_DEVICES[*]}; do
+            bluetoothctl disconnect $d >> /dev/null
+        done
+
+        bluetoothctl power off >> /dev/null
+    fi
+}
+
+case $1 in
+    --toggle)
+        toggle
+        ;;
+    --output)
+        output
+        ;;
+esac
