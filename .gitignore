@@ -5,3 +5,6 @@
 .config/Slack/
 .config/pulse/
 .config/spotify/
+.config/dconf/
+
+.config/pavucontrol.ini
