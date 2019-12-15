@@ -6,15 +6,20 @@ mkdir -p "$OUTPUT_DIR"
 NAME=$(date +%Y-%m-%d_%H:%M:%S_screenshot)
 FMT=png
 
+FILE=$OUTPUT_DIR/$NAME.$FMT
+
 case $1 in
     --select-area)
-        maim -s --format=$FMT $OUTPUT_DIR/$NAME.$FMT
+        maim -s --format=$FMT $FILE && \
+        cat $FILE | xclip -selection clipboard -t image/$FMT
         ;;
     --select-window)
-        maim -st 9999999 --format=$FMT $OUTPUT_DIR/$NAME.$FMT
+        maim -st 9999999 --format=$FMT $FILE && \
+        cat $FILE | xclip -selection clipboard -t image/$FMT
         ;;
     --entire-screen)
-        maim --format=$FMT $OUTPUT_DIR/$NAME.$FMT
+        maim --format=$FMT $FILE && \
+        cat $FILE | xclip -selection clipboard -t image/$FMT
         ;;
 esac
 
