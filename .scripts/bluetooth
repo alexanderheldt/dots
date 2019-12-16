@@ -27,31 +27,27 @@ output() {
     echo "$ICON$OUTPUT"
 }
 
-toggle() {
+toggle_power() {
     POWERED_ON=$(bluetoothctl show | grep "Powered: yes")
     if [ -z "$POWERED_ON" ]; then
         bluetoothctl power on >> /dev/null
-        sleep 1
-
-        PAIRED_DEVICES=$(bluetoothctl paired-devices | grep Device | cut -d ' ' -f 2)
-
-        for d in ${PAIRED_DEVICES[*]}; do
-            bluetoothctl connect $d >> /dev/null
-        done
     else
-        PAIRED_DEVICES=$(bluetoothctl paired-devices | grep Device | cut -d ' ' -f 2)
-
-        for d in ${PAIRED_DEVICES[*]}; do
-            bluetoothctl disconnect $d >> /dev/null
-        done
-
         bluetoothctl power off >> /dev/null
     fi
 }
 
+connect() {
+    DEVICE=$1
+
+    bluetoothctl connect $DEVICE >> /dev/null
+}
+
 case $1 in
-    --toggle)
-        toggle
+    --toggle-power)
+        toggle_power
+        ;;
+    --connect)
+        connect $2
         ;;
     --output)
         output
