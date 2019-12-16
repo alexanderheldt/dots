@@ -16,6 +16,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 
+Plug 'editorconfig/editorconfig-vim'
+
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
