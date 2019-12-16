@@ -5,7 +5,10 @@ dots=(
     .openvpn
     .screenlayout
     .scripts
+    .bash_profile
+    .bashrc
     .gitconfig
+    .profile
     .tmux.conf
     .xinitrc
     .Xresources
