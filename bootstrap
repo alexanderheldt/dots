@@ -15,14 +15,18 @@ dots=(
     .zshrc
 )
 
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
 for d in ${dots[*]}; do
     target=$HOME/$d
 
     if [ ! -L "$target" ]; then
         ln -s $PWD/$d $target
-        echo "symlink for $target created"
+        echo -e "${GREEN}symlink for $target created${NC}"
     else
-        echo "symlink for $target already exists"
+        echo -e "${RED}symlink for $target already exists${NC}"
     fi
 done
 
