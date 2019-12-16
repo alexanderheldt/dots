@@ -2,6 +2,7 @@
 
 dots=(
     .config
+    .openvpn
     .screenlayout
     .scripts
     .Xresources
@@ -16,6 +17,7 @@ for d in ${dots[*]}; do
 
     if [ ! -L "$target" ]; then
         ln -s $PWD/$d $target
+        echo "symlink for $target created"
     else
         echo "symlink for $target already exists"
     fi
