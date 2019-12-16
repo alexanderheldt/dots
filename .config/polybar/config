@@ -122,7 +122,8 @@ interval = 1
 
 exec = ~/.scripts/bluetooth --output
 
-click-right = ~/.scripts/bluetooth --toggle 
+click-left = ~/.scripts/bluetooth --connect "38:18:4C:18:A4:6E"
+click-right = ~/.scripts/bluetooth --toggle-power
 
 label = %output%
 label-foreground = ${colors.foreground}
