@@ -2,6 +2,8 @@
 
 sxhkd &
 
+bspc config remove_unplugged_monitors   true
+
 ~/.scripts/configure-monitors &
 
 bspc config focused_border_color    "#7c4d99"
