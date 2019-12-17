@@ -56,8 +56,8 @@ label-connected = %essid%
 label-connected-foreground = ${colors.foreground} 
 
 format-disconnected = <label-disconnected>
-label-disconnected = 睊:(
 label-disconnected-foreground = ${colors.foreground}
+label-disconnected = 睊
 
 ramp-signal-0 = 
 ramp-signal-foreground = ${colors.foreground}
