@@ -149,6 +149,24 @@ exec = ~/.scripts/spotify --output
 label = %output%
 label-foreground = ${colors.foreground}
 
+[bar/external]
+monitor = ${env:MONITOR:HDMI-1}
+
+background = ${colors.background}
+foreground = ${colors.foreground-dim}
+
+height = 35
+padding-right = 1
+module-margin = 1
+
+font-0 = DejaVuSansMono Nerd Font:pixelsize=18;5
+
+modules-left = bspwm
+modules-center = 
+modules-right = date
+
+wm-restack = bspwm
+
 [settings]
 screenchange-reload = true
 ;compositing-background = xor
