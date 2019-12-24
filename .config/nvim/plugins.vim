@@ -20,4 +20,3 @@ Plug 'editorconfig/editorconfig-vim'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
-
