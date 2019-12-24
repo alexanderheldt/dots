@@ -64,4 +64,3 @@ set backspace=indent,eol,start
 " More natural splitting 
 set splitbelow
 set splitright
-
