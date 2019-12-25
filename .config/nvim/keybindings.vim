@@ -71,13 +71,16 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " FZF
 nnoremap <C-p> :Files<CR>
 
+" Override ripgrep command with colors
 command! -bang -nargs=* Rg
     \ call fzf#vim#grep(
-    \   'rg --column --line-number --hidden --ignore-case --no-heading --color=always '.shellescape(<q-args>), 1,
-    \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
-    \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
-    \   <bang>0)
+    \   "rg --line-number  --column --hidden --no-heading --smart-case --color=always
+    \       --colors=path:fg:0xff,0xff,0xff
+    \       --colors=line:fg:0xc6,0xc6,0xc6
+    \       --colors=column:fg:0xc6,0xc6,0xc6
+    \       --colors=match:fg:0xf9,0xc2,0x2b "
+    \ . shellescape(<q-args>), 1, <bang>0)
 
-" Search for word under cursor
+"" Search for word under cursor
 nnoremap <leader>a :Rg <C-R><C-W><CR>
 
