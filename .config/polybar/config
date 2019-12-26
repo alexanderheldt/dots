@@ -1,7 +1,7 @@
 [colors]
 background = #262626
-foreground = #af87d7
-foreground-dim = #7c4d99
+foreground = #f9c22b
+foreground-dim = #a57b06
 alert = #cd1dd3
 
 [bar/main]
