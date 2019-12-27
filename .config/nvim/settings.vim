@@ -3,7 +3,10 @@
 " Don't keep netrw history
 let g:netrw_dirhistmax=0
 
-" If hidden is not set, TextEdit might fail.
+" Detect filetype; load plugins and indent for them
+filetype plugin indent on
+
+" If hidden is not set, TextEdit might fail
 set hidden
 
 " Some language servers have issues with backup files
