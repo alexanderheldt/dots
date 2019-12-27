@@ -16,10 +16,10 @@ set nowritebackup
 " Better display for messages
 set cmdheight=2
 
-" You will have bad experience for diagnostic messages when it's default 4000.
+" You will have bad experience for diagnostic messages when it's default 4000
 set updatetime=300
 
-" Don't give |ins-completion-menu| messages.
+" Don't give |ins-completion-menu| messages
 set shortmess+=c
 
 " Always show signcolumns
