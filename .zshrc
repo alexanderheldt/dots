@@ -27,25 +27,25 @@ HISTSIZE=100000
 SAVEHIST=$HISTSIZE
 
 # Remove older duplicate entries from history
-setopt hist_ignore_all_dups 
+setopt hist_ignore_all_dups
 
 # Remove superfluous blanks from history items
-setopt hist_reduce_blanks 
+setopt hist_reduce_blanks
 
 # Save history entries as soon as they are entered
-setopt inc_append_history 
+setopt inc_append_history
 
 # Share history between different instances of the shell
-setopt share_history 
+setopt share_history
 
 # Automatically list choices on ambiguous completion
 setopt auto_list
 
 # Automatically use menu completion
-setopt auto_menu 
+setopt auto_menu
 
 # Move cursor to end if word had one match
-setopt always_to_end 
+setopt always_to_end
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -59,10 +59,10 @@ export GDK_DPI_SCALE=0.5
 # Use ripgrep for FZF
 export FZF_DEFAULT_COMMAND='rg --files --follow --hidden'
 
-alias ls="ls --color=auto"
 alias vim="nvim"
 alias vi="nvim"
 
+alias ls="ls --color=auto"
 export GOPATH=$HOME/code/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/bin/go
