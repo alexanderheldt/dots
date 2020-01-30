@@ -50,6 +50,9 @@ setopt always_to_end
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
+bindkey '^r' history-incremental-search-backward
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
 # Scale up GUI elements
 export GDK_SCALE=2
 
