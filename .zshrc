@@ -62,6 +62,7 @@ export GDK_DPI_SCALE=0.5
 # Use ripgrep for FZF
 export FZF_DEFAULT_COMMAND='rg --files --follow --hidden'
 
+export EDITOR="nvim"
 alias vim="nvim"
 alias vi="nvim"
 
