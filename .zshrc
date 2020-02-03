@@ -53,6 +53,12 @@ bindkey '^[[B' history-substring-search-down
 bindkey '^r' history-incremental-search-backward
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
+bindkey '^[b' vi-backward-blank-word
+bindkey '^[w' vi-forward-blank-word
+
+autoload -U select-word-style
+select-word-style bash
+
 # Scale up GUI elements
 export GDK_SCALE=2
 
