@@ -54,6 +54,9 @@ bindkey '^e' end-of-line
 autoload -U select-word-style
 select-word-style bash
 
+# Reduce the lag between ESC and entering VI mode
+export KEYTIMEOUT=1
+
 # Scale up GUI elements
 export GDK_SCALE=2
 
