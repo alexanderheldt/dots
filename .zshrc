@@ -47,14 +47,9 @@ setopt auto_menu
 # Move cursor to end if word had one match
 setopt always_to_end
 
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
 bindkey '^r' history-incremental-search-backward
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
-bindkey '^[b' vi-backward-blank-word
-bindkey '^[w' vi-forward-blank-word
 
 autoload -U select-word-style
 select-word-style bash
