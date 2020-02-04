@@ -9,3 +9,6 @@ let g:coc_global_extensions = [
 " Airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'minimalist'
+
+" notational-fzf-vim
+let g:nv_search_paths = ['~/notes']

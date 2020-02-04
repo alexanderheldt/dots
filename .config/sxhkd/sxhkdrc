@@ -138,3 +138,9 @@ super + ctrl + shift + Print
 super + x
     ~/.scripts/spotify --pause; \
     slock
+
+# Notes
+super + n
+    bspc rule --add \* --one-shot state=fullscreen; \
+    alacritty --command nvim -c NV!
+
