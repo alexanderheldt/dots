@@ -7,6 +7,9 @@ antibody bundle zsh-users/zsh-autosuggestions
 antibody bundle zsh-users/zsh-history-substring-search
 antibody bundle zsh-users/zsh-completions
 
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
 # Set config directory
 export XDG_CONFIG_HOME=$HOME/.config
 
@@ -47,7 +50,6 @@ setopt auto_menu
 # Move cursor to end if word had one match
 setopt always_to_end
 
-bindkey '^r' history-incremental-search-backward
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 
