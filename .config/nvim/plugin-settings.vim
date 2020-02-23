@@ -12,3 +12,6 @@ let g:airline_theme = 'minimalist'
 
 " notational-fzf-vim
 let g:nv_search_paths = ['~/notes']
+
+" nerdtree
+let g:NERDTreeWinSize=50
