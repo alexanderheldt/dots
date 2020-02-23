@@ -6,5 +6,13 @@
 .config/pulse/
 .config/spotify/
 .config/dconf/
+.config/vlc/
+.config/transmission/
+.config/mirage/
+.config/gtk-2.0/
+.config/RawTherapee/
+.config/rclone/
+.limes/
 
+.config/QtProject.conf
 .config/pavucontrol.ini
