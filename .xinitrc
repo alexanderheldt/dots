@@ -8,6 +8,4 @@ hsetroot -solid "#191919"
 dunst &
 redshift &
 
-~/.scripts/bar &
-
 exec bspwm
