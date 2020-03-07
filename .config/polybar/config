@@ -17,7 +17,7 @@ module-margin = 1
 font-0 = DejaVuSansMono Nerd Font:pixelsize=18;5
 
 modules-left = bspwm
-modules-center = 
+modules-center =
 modules-right = spotify bluetooth volume wlan vpn battery date
 
 ;tray-position = right
@@ -42,7 +42,7 @@ label-urgent-foreground = ${colors.background}
 label-urgent-background = ${colors.foreground}
 label-urgent-padding = 1
 
-label-empty = 
+label-empty =
 
 ;label-separator = |
 
@@ -53,7 +53,7 @@ interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
 label-connected = %essid%
-label-connected-foreground = ${colors.foreground} 
+label-connected-foreground = ${colors.foreground}
 
 format-disconnected = <label-disconnected>
 label-disconnected-foreground = ${colors.foreground}
@@ -162,7 +162,7 @@ module-margin = 1
 font-0 = DejaVuSansMono Nerd Font:pixelsize=18;5
 
 modules-left = bspwm
-modules-center = 
+modules-center =
 modules-right = date
 
 wm-restack = bspwm
