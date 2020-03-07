@@ -7,7 +7,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'https://github.com/alok/notational-fzf-vim'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
