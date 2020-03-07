@@ -12,3 +12,6 @@ let g:airline_theme = 'minimalist'
 
 " nerdtree
 let g:NERDTreeWinSize=50
+
+" vimwiki
+let g:vimwiki_url_maxsave=0  

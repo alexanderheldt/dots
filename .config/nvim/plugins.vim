@@ -3,6 +3,8 @@ Plug 'alexanderheldt/monokrom.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'vimwiki/vimwiki'
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug '/usr/bin/fzf'

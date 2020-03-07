@@ -139,3 +139,7 @@ super + x
     ~/.scripts/spotify --pause; \
     slock
 
+# Wiki
+super + n
+    bspc rule add \* --one-shot state=fullscreen; \
+    alacritty --command nvim -c VimwikiIndex
