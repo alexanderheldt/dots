@@ -19,6 +19,9 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
+# Create temporary directory
+mkdir ~/.tmp
+
 echo "[START] dots symlinks"
 for d in ${dots[*]}; do
     target=$HOME/$d
