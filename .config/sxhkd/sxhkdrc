@@ -141,5 +141,4 @@ super + x
 
 # Wiki
 super + n
-    bspc rule add \* --one-shot state=fullscreen; \
-    alacritty --command nvim -c VimwikiIndex
+    ~/.scripts/wiki
