@@ -1,4 +1,5 @@
 #!/bin/sh
 
 bspc rule --add \* --one-shot monitor=primary state=fullscreen follow=on && \
+cd ~/vimwiki && \
 alacritty --command nvim -c VimwikiIndex
