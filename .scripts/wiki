@@ -1,5 +1,17 @@
 #!/bin/sh
 
-bspc rule --add \* --one-shot monitor=primary state=fullscreen follow=on && \
-cd ~/vimwiki && \
+CURRENT_NODE=$(bspc query -N -n)
+
+# Enter directory to give fzf/ripgrep better context of what files 
+# are interesting
+cd ~/vimwiki
+
+# Add a one time rule (not persisted) to open any new node on the primary
+# monitor in fullscreen
+bspc rule --add \* --one-shot monitor=primary state=fullscreen follow=on
+
+# Open vimwiki in alacritty
 alacritty --command nvim -c VimwikiIndex
+
+# Return to the node where this script was invoked
+bspc node -f $CURRENT_NODE
