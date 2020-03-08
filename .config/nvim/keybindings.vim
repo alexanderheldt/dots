@@ -68,9 +68,6 @@ nmap <leader>rn <Plug>(coc-rename)
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-" FZF
-nnoremap <C-p> :Files<CR>
-
 " Override ripgrep command with colors
 command! -bang -nargs=* Rg
     \ call fzf#vim#grep(
@@ -80,6 +77,12 @@ command! -bang -nargs=* Rg
     \       --colors=column:fg:0xc6,0xc6,0xc6
     \       --colors=match:fg:0xf9,0xc2,0x2b "
     \ . shellescape(<q-args>), 1, <bang>0)
+
+" FZF
+nnoremap <C-p> :Files<CR>
+
+" Rg
+nnoremap <C-a> :Rg<CR>
 
 "" Search for word under cursor
 nnoremap <leader>a :Rg <C-R><C-W><CR>
