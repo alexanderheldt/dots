@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+# Usage:
+# ./pvpn --status
+# ./pvpn --output
+# ./pvpn --toggle
+
+STATUS_FILE=~/.tmp/protonvpn-status
+STATUS_DISCONNECTED=0
+STATUS_CONNECTING=1
+STATUS_CONNECTED=2
+
+status() {
+    if [ -f $STATUS_FILE ]; then
+        read STATUS < $STATUS_FILE
+    else
+        STATUS=$STATUS_DISCONNECTED
+    fi
+
+    echo $STATUS
+}
+
+output() {
+    STATUS=$(status)
+
+    case $STATUS in
+        $STATUS_DISCONNECTED)
+            echo "P"
+            ;;
+        $STATUS_CONNECTING)
+            echo "P Connecting"
+            ;;
+        $STATUS_CONNECTED)
+            SERVER=$(protonvpn status | awk '/Server:/ {print $2}')
+            echo "P $SERVER"
+            ;;
+        *)
+            echo "P Status unknown"
+            ;;
+    esac
+}
+
+toggle() {
+    STATUS=$(status)
+
+    if [ "$STATUS" = $STATUS_CONNECTED ]; then
+        sudo protonvpn disconnect
+        echo  $STATUS_DISCONNECTED > "$STATUS_FILE"
+    else
+        echo $STATUS_CONNECTING > "$STATUS_FILE"
+        sudo protonvpn connect --fast
+        echo $STATUS_CONNECTED > "$STATUS_FILE"
+
+    fi
+}
+
+case $1 in
+    --status)
+        status
+        ;;
+    --toggle)
+        toggle
+        ;;
+    --output)
+        output
+        ;;
+esac
