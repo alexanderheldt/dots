@@ -4,6 +4,11 @@ sxhkd &
 
 bspc config remove_unplugged_monitors   true
 
+# Ensure that no `configure-monitors` processes are running
+# before starting new ones
+killall -q configure-monitors
+while pgrep -f configure-monitors > /dev/null; do sleep 1; done
+
 ~/.scripts/configure-monitors
 
 bspc config focused_border_color    "#a57b06"

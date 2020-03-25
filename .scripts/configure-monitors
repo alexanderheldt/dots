@@ -1,11 +1,12 @@
-#!/bin/bash
+#!/bin/sh
 
 configure_monitors() {
-    MAIN_MONITOR="eDP-1"
-    EXTERNAL_MONITOR=$(xrandr --query | grep "HDMI-1 connected" | cut -d " " -f1)
-
+    # Ensure that all `polybar` processes are removed before starting new ones
     killall -q polybar
     while pgrep -x polybar > /dev/null; do sleep 1; done
+
+    MAIN_MONITOR="eDP-1"
+    EXTERNAL_MONITOR=$(xrandr --query | grep "HDMI-1 connected" | cut -d " " -f1)
 
     if [ ! -z ${EXTERNAL_MONITOR} ]; then
         ~/.screenlayout/laptop+hdmi.sh
