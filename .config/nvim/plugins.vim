@@ -3,6 +3,8 @@ Plug 'alexanderheldt/monokrom.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+Plug 'maxmellon/vim-jsx-pretty'
+
 Plug 'vimwiki/vimwiki'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
