@@ -6,6 +6,8 @@ let g:netrw_dirhistmax=0
 " Detect filetype; load plugins and indent for them
 filetype plugin indent on
 
+syntax on
+
 " If hidden is not set, TextEdit might fail
 set hidden
 
