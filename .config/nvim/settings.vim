@@ -57,15 +57,15 @@ set smartindent
 set expandtab
 set softtabstop=4
 
-" Show existing tab with 2 spaces width
-set tabstop=4
-
 " When indenting with '>', use 4 spaces width
 set shiftwidth=4
+
+" Show existing tab with 4 spaces width
+set tabstop=4
 
 " TODO what does this do?
 set backspace=indent,eol,start
 
-" More natural splitting 
+" More natural splitting
 set splitbelow
 set splitright
