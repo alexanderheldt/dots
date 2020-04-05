@@ -12,7 +12,7 @@
 .config/gtk-2.0/
 .config/RawTherapee/
 .config/rclone/
-.limes/
+.config/chromium/
 
 .config/QtProject.conf
 .config/pavucontrol.ini
