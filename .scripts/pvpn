@@ -25,17 +25,17 @@ output() {
 
     case $STATUS in
         $STATUS_DISCONNECTED)
-            echo "P"
+            echo ""
             ;;
         $STATUS_CONNECTING)
-            echo "P Connecting"
+            echo " Connecting"
             ;;
         $STATUS_CONNECTED)
             SERVER=$(protonvpn status | awk '/Server:/ {print $2}')
-            echo "P $SERVER"
+            echo " $SERVER"
             ;;
         *)
-            echo "P Status unknown"
+            echo " Status unknown"
             ;;
     esac
 }

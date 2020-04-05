@@ -18,7 +18,7 @@ font-0 = DejaVuSansMono Nerd Font:pixelsize=18;5
 
 modules-left = bspwm
 modules-center =
-modules-right = spotify bluetooth volume wlan protonvpn vpn battery date
+modules-right = spotify bluetooth volume wlan protonvpn battery date
 
 ;tray-position = right
 ;tray-padding = 2
@@ -72,17 +72,6 @@ label-foreground = ${colors.foreground}
 
 exec = ~/.scripts/pvpn --output
 click-right = ~/.scripts/pvpn --toggle
-
-[module/vpn]
-type=custom/script
-
-interval = 1
-
-label = %output%
-label-foreground = ${colors.foreground}
-
-exec = ~/.scripts/vpn --status "work-VPN"
-click-right = ~/.scripts/vpn --toggle "work-VPN"
 
 [module/volume]
 type=custom/script

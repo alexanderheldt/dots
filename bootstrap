@@ -2,7 +2,6 @@
 
 dots=(
     .config
-    .openvpn
     .screenlayout
     .scripts
     .bash_profile
