@@ -16,4 +16,9 @@ let g:NERDTreeWinSize=50
 " vimwiki
 let g:vimwiki_url_maxsave=0
 
+let g:vimwiki_list = [
+    \ {'path': '~/vimwiki/personal/' },
+    \ {'path': '~/vimwiki/work/' }
+    \]
+
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
