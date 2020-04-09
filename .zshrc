@@ -1,6 +1,5 @@
 source <(antibody init)
-antibody bundle mafredri/zsh-async
-antibody bundle sindresorhus/pure
+antibody bundle denysdovhan/spaceship-prompt
 
 antibody bundle zsh-users/zsh-syntax-highlighting
 antibody bundle zsh-users/zsh-autosuggestions
@@ -73,7 +72,58 @@ alias vim="nvim"
 alias vi="nvim"
 
 alias ls="ls --color=auto"
+
 export GOPATH=$HOME/code/go
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/usr/bin/go
 export PATH=$PATH:$HOME/.cargo/bin
+
+SPACESHIP_TIME_SHOW=true
+SPACESHIP_TIME_PREFIX=''
+SPACESHIP_GIT_PREFIX=''
+SPACESHIP_CHAR_SYMBOL=''
+
+SPACESHIP_PROMPT_ORDER=(
+  #time          # Time stamps section
+  user          # Username section
+  dir           # Current directory section
+  host          # Hostname section
+  #hg            # Mercurial section (hg_branch  + hg_status)
+  #package       # Package version
+  #node          # Node.js section
+  #ruby          # Ruby section
+  #elixir        # Elixir section
+  #xcode         # Xcode section
+  #swift         # Swift section
+  #golang        # Go section
+  #php           # PHP section
+  #rust          # Rust section
+  #haskell       # Haskell Stack section
+  #julia         # Julia section
+  #docker        # Docker section
+  aws           # Amazon Web Services section
+  #venv          # virtualenv section
+  #conda         # conda virtualenv section
+  #pyenv         # Pyenv section
+  #dotnet        # .NET section
+  #ember         # Ember.js section
+  #kubectl       # Kubectl context section
+  #terraform     # Terraform workspace section
+  #exec_time     # Execution time
+  #line_sep      # Line break
+  #battery       # Battery level and status
+  #vi_mode       # Vi-mode indicator
+  #jobs          # Background jobs indicator
+  #exit_code     # Exit code section
+  char          # Prompt character
+)
+
+SPACESHIP_RPROMPT_ORDER=(
+    exec_time     # Execution time
+    git           # Git section (git_branch + git_status)
+    jobs          # Background jobs indicator
+    exit_code     # Exit code section
+    time          # Time stamps section
+)
+
+autoload -U promptinit; promptinit
