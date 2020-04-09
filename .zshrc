@@ -52,9 +52,13 @@ setopt always_to_end
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 
+# Fix backspace bug when switching modes
+bindkey '^?' backward-delete-char
+
 autoload -U select-word-style
 select-word-style bash
 
+bindkey -v
 # Reduce the lag between ESC and entering VI mode
 export KEYTIMEOUT=1
 
