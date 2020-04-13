@@ -5,10 +5,10 @@
 # ./pvpn --output
 # ./pvpn --toggle
 
-STATUS_FILE=~/.tmp/protonvpn-status
 STATUS_DISCONNECTED=0
 STATUS_CONNECTING=1
 STATUS_CONNECTED=2
+STATUS_FILE=/tmp/protonvpn-status
 
 status() {
     if [ -f $STATUS_FILE ]; then
