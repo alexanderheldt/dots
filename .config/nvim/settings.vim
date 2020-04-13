@@ -39,11 +39,10 @@ set number
 " Hilight current line
 set cursorline
 
-" Line wrapping with margin
+" Line wrapping with margin, with no line breaks unless explicitly made
 set wrap
-set wrapmargin=8
-
-" Only wrap on linebreaks
+set textwidth=0
+set wrapmargin=0
 set linebreak
 
 " Don't redraw screen when executing macros
