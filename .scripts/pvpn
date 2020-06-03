@@ -5,10 +5,14 @@
 # ./pvpn --output
 # ./pvpn --toggle
 
-STATUS_DISCONNECTED=0
-STATUS_CONNECTING=1
-STATUS_CONNECTED=2
 STATUS_FILE=/tmp/protonvpn-status
+STATUS_DISCONNECTING=DISCONNECTING
+STATUS_DISCONNECTED=DISCONNECTED
+STATUS_CONNECTING=CONNECTING
+STATUS_CONNECTED=CONNECTED
+STATUS_UNKNOWN=UNKNOWN
+
+SERVER_FILE=/tmp/protonvpn-server
 
 status() {
     if [ -f $STATUS_FILE ]; then
@@ -20,38 +24,56 @@ status() {
     echo $STATUS
 }
 
+server() {
+    if [ -f $SERVER_FILE ]; then
+        read SERVER < $SERVER_FILE
+    else
+        SERVER=""
+    fi
+
+    echo $SERVER
+
+}
+
 output() {
     STATUS=$(status)
 
-    case $STATUS in
+    case "$STATUS" in
+        $STATUS_DISCONNECTING)
+            echo " Disconnecting" ;;
         $STATUS_DISCONNECTED)
-            echo ""
-            ;;
+            echo "" ;;
         $STATUS_CONNECTING)
-            echo " Connecting"
-            ;;
+            echo " Connecting" ;;
         $STATUS_CONNECTED)
-            SERVER=$(protonvpn status | awk '/Server:/ {print $2}')
-            echo " $SERVER"
-            ;;
+            SERVER=$(server)
+            echo " $SERVER" ;;
         *)
-            echo " Status unknown"
-            ;;
+            echo " Status unknown" ;;
     esac
 }
 
+connect() {
+    echo $STATUS_CONNECTING > "$STATUS_FILE"
+    sudo protonvpn connect --fast && echo $STATUS_CONNECTED > "$STATUS_FILE" || echo $STATUS_UNKNOWN > "$STATUS_FILE"
+    protonvpn status | awk '/Server:/ {print $2}' > "$SERVER_FILE"
+}
+
+disconnect() {
+    echo $STATUS_DISCONNECTING > "$STATUS_FILE"
+    sudo protonvpn disconnect && echo $STATUS_DISCONNECTED > "$STATUS_FILE" || echo $STATUS_UNKNOWN > "$STATUS_FILE"
+    echo "" > "$SERVER_FILE"
+}
+
 toggle() {
-    STATUS=$(status)
+    CURRENT_STATUS=$(status)
 
-    if [ "$STATUS" = $STATUS_CONNECTED ]; then
-        sudo protonvpn disconnect
-        echo  $STATUS_DISCONNECTED > "$STATUS_FILE"
-    else
-        echo $STATUS_CONNECTING > "$STATUS_FILE"
-        sudo protonvpn connect --fast
-        echo $STATUS_CONNECTED > "$STATUS_FILE"
-
-    fi
+    case "$CURRENT_STATUS" in
+        $STATUS_CONNECTED | $STATUS_UNKNOWN)
+            disconnect ;;
+        *)
+            connect ;;
+    esac
 }
 
 case $1 in
