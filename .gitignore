@@ -13,6 +13,16 @@
 .config/RawTherapee/
 .config/rclone/
 .config/chromium/
+.config/Postman/
+.config/discord/
+.config/go/
+.config/Fritzing/
+.config/Microsoft/Microsoft Teams/
+.config/teams/
+.config/firebase/
+.config/gcloud/
 
+.config/zoomus.conf
 .config/QtProject.conf
 .config/pavucontrol.ini
+.config/mimeapps.list
