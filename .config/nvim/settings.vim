@@ -52,15 +52,15 @@ set lazyredraw
 set autoindent
 set smartindent
 
-" Inset 4 spaces when pressing tab
+" Inset 2 spaces when pressing tab
 set expandtab
-set softtabstop=4
+set softtabstop=2
 
-" When indenting with '>', use 4 spaces width
-set shiftwidth=4
+" When indenting with '>', use 2 spaces width
+set shiftwidth=2
 
-" Show existing tab with 4 spaces width
-set tabstop=4
+" Show existing tab with 2 spaces width
+set tabstop=2
 
 " TODO what does this do?
 set backspace=indent,eol,start
