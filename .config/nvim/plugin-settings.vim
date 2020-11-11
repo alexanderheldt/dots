@@ -24,3 +24,5 @@ let g:vimwiki_list = [
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
 let g:go_rename_command = 'gopls'
+
+let g:fzf_layout = { 'down':  '40%'}
