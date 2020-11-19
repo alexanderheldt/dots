@@ -8,7 +8,7 @@ output() {
     if [ -z "$POWERED_ON" ]; then
         ICON=""
     else
-        ICON=""
+        ICON=""
 
         PAIRED_DEVICES=$(bluetoothctl paired-devices | grep Device | cut -d ' ' -f 2)
 
@@ -17,7 +17,6 @@ output() {
             DEVICE_CONNECTED=$(echo $DEVICE_INFO | grep "Connected: yes")
 
             if [ ! -z "$DEVICE_CONNECTED" ]; then
-                ICON=""
                 DEVICE_ALIAS=$(echo "$DEVICE_INFO" | grep "Alias" | cut -d ' ' -f 2-)
                 OUTPUT="$OUTPUT $DEVICE_ALIAS"
             fi
