@@ -40,9 +40,10 @@ inoremap <silent><expr> <C-space> coc#refresh()
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<CR>
+nmap <silent> gs :call CocAction('jumpDefinition', 'split')<CR>
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
