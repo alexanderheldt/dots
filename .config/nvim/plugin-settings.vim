@@ -15,14 +15,14 @@ let g:NERDTreeWinSize=50
 
 " vimwiki
 let g:vimwiki_url_maxsave=0
-
 let g:vimwiki_list = [
     \ {'path': '~/vimwiki/personal/' },
     \ {'path': '~/vimwiki/work/' }
     \]
 
+" Go
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
-
 let g:go_rename_command = 'gopls'
 
+" fzf
 let g:fzf_layout = { 'down':  '40%'}
