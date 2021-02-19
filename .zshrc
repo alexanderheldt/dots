@@ -74,7 +74,7 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --hidden'
 export EDITOR="nvim"
 alias vim="nvim"
 alias vi="nvim"
-
+alias n="nvim"
 alias ls="ls --color=auto"
 
 export GOPATH=$HOME/code/go
