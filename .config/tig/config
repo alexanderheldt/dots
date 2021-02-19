@@ -452,3 +452,6 @@ set git-colors = \
 	status.updated=stat-staged \
 	status.changed=stat-unstaged \
 	status.untracked=stat-untracked
+
+set main-view-line-number = yes
+set main-view-line-number-interval = 1
