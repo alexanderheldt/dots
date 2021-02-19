@@ -21,6 +21,9 @@
 .config/teams/
 .config/firebase/
 .config/gcloud/
+.config/GIMP/
+.config/nvm/
+.config/obsidian/
 
 .config/zoomus.conf
 .config/QtProject.conf
