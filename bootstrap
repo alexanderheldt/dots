@@ -31,6 +31,8 @@ for d in ${dots[*]}; do
 done
 echo "[DONE] dots symlinks"
 
-echo "[START] xorg.conf.d symlinks, will require password"
-sudo ln -s $PWD/X11-config/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
-echo "[DONE] xorg.conf.d symlinks"
+if [ ! -L /etc/X11/xorg.conf.d/30-touchpad.conf ]; then
+  echo "[START] symlinking xorg.conf.d, will require password"
+  sudo ln -s $PWD/X11-config/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
+  echo "[DONE] xorg.conf.d symlinked"
+fi
