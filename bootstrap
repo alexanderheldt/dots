@@ -12,6 +12,7 @@ dots=(
     .xinitrc
     .Xresources
     .zshrc
+    .emacs.d
 )
 
 GREEN='\033[0;32m'
