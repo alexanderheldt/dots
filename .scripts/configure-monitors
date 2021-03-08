@@ -4,18 +4,31 @@
 killall -q polybar
 while pgrep -x polybar > /dev/null; do sleep 1; done
 
-MAIN_MONITOR="eDP-1"
-EXTERNAL_MONITOR=$(xrandr --query | grep "HDMI-1 connected" | cut -d " " -f1)
+LAPTOP_MONITOR="eDP-1"
+EXTERNAL_MONITOR="HDMI-1"
 
-if [ ! -z ${EXTERNAL_MONITOR} ]; then
+HDMI_STATUS=$(cat /sys/class/drm/card0-HDMI-A-1/status)
+LAPTOP_LID_STATE=$(cat /proc/acpi/button/lid/LID/state | awk '{print $2}')
+
+if [ $HDMI_STATUS = "connected" ]; then
+  if [ $LAPTOP_LID_STATE = "open" ]; then
+    notify-send "Using laptop + external monitor"
     ~/.screenlayout/laptop+hdmi.sh
-    bspc monitor $MAIN_MONITOR -d 1 2 3 4 5
+    bspc monitor $LAPTOP_MONITOR -d 1 2 3 4 5
     bspc monitor $EXTERNAL_MONITOR -d 6 7 8 9 10
-    MONITOR=$MAIN_MONITOR polybar --reload main &
+    MONITOR=$LAPTOP_MONITOR polybar --reload main &
     MONITOR=$EXTERNAL_MONITOR polybar --reload external &
-else
-    ~/.screenlayout/laptop.sh
-    bspc monitor $MAIN_MONITOR -d 1 2 3 4 5 6 7 8 9 10
-    MONITOR=$MAIN_MONITOR polybar --reload main &
+  else
+    notify-send "Using external monitor"
+    ~/.screenlayout/hdmi.sh
+    bspc monitor $EXTERNAL_MONITOR -d 1 2 3 4 5 6 7 8 9 10
+    MONITOR=$EXTERNAL_MONITOR polybar --reload main &
+  fi
+
+  exit 0
 fi
 
+notify-send "Using laptop monitor"
+~/.screenlayout/laptop.sh
+bspc monitor $LAPTOP_MONITOR -d 1 2 3 4 5 6 7 8 9 10
+MONITOR=$LAPTOP_MONITOR polybar --reload main &
