@@ -36,4 +36,20 @@ if [ ! -L /etc/X11/xorg.conf.d/30-touchpad.conf ]; then
   echo "[START] symlinking xorg.conf.d, will require password"
   sudo ln -s $PWD/X11-config/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
   echo "[DONE] xorg.conf.d symlinked"
+else
+  echo -e "${RED}symlink for xorg.conf.d already exists${NC}"
+fi
+
+if [ ! -L /etc/acpi/lid.sh ]; then
+  echo "[START] symlinking acpi action lid.sh, will require password"
+  sudo ln -s $PWD/acpi/lid.sh /etc/acpi/lid.sh
+  echo "[DONE] acpi action lid.sh symlinked"
+else
+  echo -e "${RED}symlink for lid.sh already exists${NC}"
+fi
+
+if [ ! -L /etc/acpi/events/button-lid ]; then
+  echo "[START] symlinking acpi event button-lid, will require password"
+  sudo ln -s $PWD/acpi/button-lid /etc/acpi/events/button-lid
+  echo "[DONE] acpi event button-lid symlinked"
 fi
