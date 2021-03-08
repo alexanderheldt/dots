@@ -3,6 +3,7 @@
 sxhkd &
 
 bspc config remove_unplugged_monitors   true
+bspc config remove_disabled_monitors    true
 
 # Ensure that no `configure-monitors` processes are running
 # before starting new ones
