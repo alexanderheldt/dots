@@ -11,6 +11,10 @@ killall -q configure-monitors
 while pgrep -f configure-monitors > /dev/null; do sleep 1; done
 
 ~/.scripts/configure-monitors
+bspc subscribe monitor_geometry | while read -r line; do
+  notify-send 'Updating monitor(s)'
+  ~/.scripts/configure-monitors
+done &
 
 bspc config focused_border_color    "#a57b06"
 bspc config normal_border_color     "#262626"

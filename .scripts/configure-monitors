@@ -1,29 +1,21 @@
 #!/bin/sh
 
-configure_monitors() {
-    # Ensure that all `polybar` processes are removed before starting new ones
-    killall -q polybar
-    while pgrep -x polybar > /dev/null; do sleep 1; done
+# Ensure that all `polybar` processes are removed before starting new ones
+killall -q polybar
+while pgrep -x polybar > /dev/null; do sleep 1; done
 
-    MAIN_MONITOR="eDP-1"
-    EXTERNAL_MONITOR=$(xrandr --query | grep "HDMI-1 connected" | cut -d " " -f1)
+MAIN_MONITOR="eDP-1"
+EXTERNAL_MONITOR=$(xrandr --query | grep "HDMI-1 connected" | cut -d " " -f1)
 
-    if [ ! -z ${EXTERNAL_MONITOR} ]; then
-        ~/.screenlayout/laptop+hdmi.sh
-        bspc monitor $MAIN_MONITOR -d 1 2 3 4 5
-        bspc monitor $EXTERNAL_MONITOR -d 6 7 8 9 10
-        MONITOR=$MAIN_MONITOR polybar --reload main &
-        MONITOR=$EXTERNAL_MONITOR polybar --reload external &
-    else
-        ~/.screenlayout/laptop.sh
-        bspc monitor $MAIN_MONITOR -d 1 2 3 4 5 6 7 8 9 10
-        MONITOR=$MAIN_MONITOR polybar --reload main &
-    fi
-}
+if [ ! -z ${EXTERNAL_MONITOR} ]; then
+    ~/.screenlayout/laptop+hdmi.sh
+    bspc monitor $MAIN_MONITOR -d 1 2 3 4 5
+    bspc monitor $EXTERNAL_MONITOR -d 6 7 8 9 10
+    MONITOR=$MAIN_MONITOR polybar --reload main &
+    MONITOR=$EXTERNAL_MONITOR polybar --reload external &
+else
+    ~/.screenlayout/laptop.sh
+    bspc monitor $MAIN_MONITOR -d 1 2 3 4 5 6 7 8 9 10
+    MONITOR=$MAIN_MONITOR polybar --reload main &
+fi
 
-configure_monitors
-
-bspc subscribe monitor_geometry | while read -r line; do
-    notify-send 'Updating monitor(s)'
-    configure_monitors
-done &
