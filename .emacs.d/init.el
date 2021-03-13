@@ -32,6 +32,7 @@
 
 (column-number-mode)
 (global-display-line-numbers-mode t)
+(setq display-line-numbers-width-start t)
 
 (use-package counsel
   :bind (("M-x" . counsel-M-x)
