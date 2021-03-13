@@ -126,12 +126,15 @@ super + alt + {Left,Down,Right}
 # Screenshot
 #
 super + Print
+    notify-send 'ps: entire screen' && \
     ~/.scripts/screenshot --entire-screen
 
 super + shift + Print
+    notify-send 'ps: selected window' && \
     ~/.scripts/screenshot --select-window
 
 super + ctrl + shift + Print
+    notify-send 'ps: selected area' && \
     ~/.scripts/screenshot --select-area
 
 # Lock screen
