@@ -79,13 +79,13 @@
   :init
   (ivy-mode 1))
 
-(use-package all-the-icons)
-
 ;; NOTE: The first time this configuration is loaded on a new machine, you'll
 ;; need to run the following command interactively so that mode line icons
 ;; display correctly:
 ;;
 ;; M-x all-the-icons-install-fonts
+
+(use-package all-the-icons)
 
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
