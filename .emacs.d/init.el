@@ -127,6 +127,16 @@
 
 (use-package hydra)
 
+(defhydra hydra-text-scale (:timeout 4)
+  "scale text"
+  ("j" text-scale-increase "in")
+  ("k" text-scale-decrease "out")
+  ("r" (text-scale-adjust 0) "reset")
+  ("esc" nil "finished" :exit t))
+
+(alex/leader-keys
+  "ts" '(hydra-text-scale/body :which-key "scale text"))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
