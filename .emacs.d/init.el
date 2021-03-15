@@ -137,6 +137,22 @@
 (alex/leader-keys
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 
+(use-package org
+  :config
+  (setq org-ellipsis " ▾")
+  (setq org-agenda-start-with-log-mode t)
+  (setq org-log-done 'time)
+  (setq org-agenda-files '("~/org"))
+
+  (require 'org-habit)
+  (add-to-list 'org-modules 'org-habit)
+
+  (setq org-habit-graph-column 60))
+
+(alex/leader-keys
+ "o" '(:ignore t :which-key "org")
+ "oa" '(org-agenda :which-key "agenda"))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
