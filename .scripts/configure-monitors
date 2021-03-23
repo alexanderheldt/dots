@@ -14,8 +14,8 @@ if [ $HDMI_STATUS = "connected" ]; then
   if [ $LAPTOP_LID_STATE = "open" ]; then
     notify-send "Using laptop + external monitor"
     ~/.screenlayout/laptop+hdmi.sh
-    bspc monitor $LAPTOP_MONITOR -d 1 2 3 4 5
-    bspc monitor $EXTERNAL_MONITOR -d 6 7 8 9 10
+    bspc monitor $LAPTOP_MONITOR -d 6 7 8 9 10
+    bspc monitor $EXTERNAL_MONITOR -d 1 2 3 4 5
     MONITOR=$LAPTOP_MONITOR polybar --reload main &
     MONITOR=$EXTERNAL_MONITOR polybar --reload external &
   else
