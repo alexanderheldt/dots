@@ -35,18 +35,41 @@ toggle_power() {
     fi
 }
 
+toggle_connection() {
+  DEVICE=$1
+
+  CONNECTED=$(bluetoothctl info $DEVICE | grep "Connected: yes")
+  if [ -z "$CONNECTED" ]; then
+    connect $DEVICE
+  else
+    disconnect $DEVICE
+  fi
+}
+
 connect() {
     DEVICE=$1
 
     bluetoothctl connect $DEVICE >> /dev/null
 }
 
+disconnect() {
+    DEVICE=$1
+
+    bluetoothctl disconnect $DEVICE >> /dev/null
+}
+
 case $1 in
     --toggle-power)
         toggle_power
         ;;
+    --toggle-connection)
+        toggle_connection $2
+        ;;
     --connect)
         connect $2
+        ;;
+    --disconnect)
+        disconnect $2
         ;;
     --output)
         output
