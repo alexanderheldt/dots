@@ -16,6 +16,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
 
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
