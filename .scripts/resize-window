@@ -1,0 +1,12 @@
+#!/bin/sh
+
+axis=$1
+operator=$2
+
+if [ "$axis" = "x" ]; then
+	bspc node --resize right ${operator}20 0 || bspc node --resize right ${operator}20 0 ||
+	bspc node --resize left ${operator}20 0 || bspc node --resize left ${operator}20 0
+else
+	bspc node --resize bottom 0 ${operator}20 || bspc node --resize bottom 0 ${operator}20 ||
+	bspc node --resize top 0 ${operator}20 || bspc node --resize top 0 ${operator}20
+fi
