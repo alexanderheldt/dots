@@ -138,6 +138,7 @@
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 
 (use-package org
+  :hook (org-mode . visual-line-mode)
   :config
   (setq org-ellipsis " ▾")
   (setq org-agenda-start-with-log-mode t)
