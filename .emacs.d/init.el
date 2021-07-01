@@ -143,6 +143,7 @@
   (setq org-ellipsis " ▾")
   (setq org-agenda-start-with-log-mode t)
   (setq org-log-done 'time)
+  (setq org-cycle-separator-lines 1)
   (setq org-agenda-files '("~/org"))
 
   (require 'org-habit)
