@@ -24,6 +24,8 @@
 .config/GIMP/
 .config/nvm/
 .config/obsidian/
+.emacs.d/elpa/
+.emacs.d/auto-save-list/
 
 .config/zoomus.conf
 .config/QtProject.conf
