@@ -134,7 +134,6 @@ interval = 1
 exec = ~/.scripts/bluetooth --output
 
 click-left = ~/.scripts/bluetooth --toggle-connection "38:18:4C:18:A4:6E"
-click-middle ~/.scripts/bluetooth --toggle-connection "A8:91:3D:E5:FE:38"
 click-right = ~/.scripts/bluetooth --toggle-power
 
 label = %output%
