@@ -13,6 +13,16 @@
 (set-face-attribute 'default nil :font "DejaVuSansMono Nerd Font" :height 120)
 (load-theme 'wombat)
 
+;; Don't create backup and autosave files
+(setq temporary-file-directory "~/.emacs.d/tmp/")
+(unless (file-exists-p "~/.emacs.d/tmp")
+  (make-directory "~/.emacs.d/tmp"))
+
+(setq backup-inhibited t
+      make-backup-files nil  ; don't create backup~ files
+      create-lockfiles nil
+      auto-save-default nil) ; don't create #autosave# files
+
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
