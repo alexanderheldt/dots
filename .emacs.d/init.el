@@ -146,8 +146,8 @@
 
 (defhydra hydra-text-scale (:timeout 4)
   "scale text"
-  ("j" text-scale-increase "in")
-  ("k" text-scale-decrease "out")
+  ("k" text-scale-increase "in")
+  ("j" text-scale-decrease "out")
   ("r" (text-scale-adjust 0) "reset")
   ("esc" nil "finished" :exit t))
 
