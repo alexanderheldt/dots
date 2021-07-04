@@ -23,6 +23,9 @@
       create-lockfiles nil
       auto-save-default nil) ; don't create #autosave# files
 
+;; Don't write custom setting
+(setq custom-file null-device)
+
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
@@ -168,18 +171,3 @@
 (alex/leader-keys
  "o" '(:ignore t :which-key "org")
  "oa" '(org-agenda :which-key "agenda"))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(general helpful evil-collection evil ivy-rich which-key doom-themes use-package doom-modeline counsel)))
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
