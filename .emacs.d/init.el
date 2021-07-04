@@ -6,6 +6,10 @@
 (set-fringe-mode 10)        ; Give some breathing room
 (menu-bar-mode -1)          ; Disable the menu bar
 
+(tab-bar-mode)
+(setq tab-bar-close-button-show nil)
+(setq tab-bar-new-button-show nil)
+
 (set-face-attribute 'default nil :font "DejaVuSansMono Nerd Font" :height 120)
 (load-theme 'wombat)
 
