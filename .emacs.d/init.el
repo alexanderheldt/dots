@@ -170,5 +170,5 @@
   (setq org-habit-graph-column 60))
 
 (alex/leader-keys
- "o" '(:ignore t :which-key "org")
- "oa" '(org-agenda :which-key "agenda"))
+  "o" '(:ignore t :which-key "org")
+  "oa" '(org-agenda :which-key "agenda"))
