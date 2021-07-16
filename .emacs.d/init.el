@@ -173,3 +173,6 @@
 (alex/leader-keys
   "o" '(:ignore t :which-key "org")
   "oa" '(org-agenda :which-key "agenda"))
+
+(alex/leader-keys
+  "w" '(whitespace-cleanup :which-key "whitespace cleanup"))
