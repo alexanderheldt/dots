@@ -156,7 +156,8 @@
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 
 (use-package org
-  :hook (org-mode . visual-line-mode)
+  :hook ((org-mode . visual-line-mode)
+	 (org-mode . (lambda () (setq show-trailing-whitespace t))))
   :config
   (setq org-ellipsis " ▾")
   (setq org-agenda-start-with-log-mode t)
@@ -176,3 +177,7 @@
 
 (alex/leader-keys
   "w" '(whitespace-cleanup :which-key "whitespace cleanup"))
+
+(add-hook 'prog-mode-hook
+  (lambda ()
+    (setq show-trailing-whitespace t)))
