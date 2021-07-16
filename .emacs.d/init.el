@@ -152,6 +152,7 @@
   ("esc" nil "finished" :exit t))
 
 (alex/leader-keys
+  "t" '(:ignore t :which-key "text")
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 
 (use-package org
