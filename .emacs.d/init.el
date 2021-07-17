@@ -26,6 +26,8 @@
 ;; Don't write custom setting
 (setq custom-file null-device)
 
+(setq confirm-kill-emacs 'y-or-n-p)
+
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
