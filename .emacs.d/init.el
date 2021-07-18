@@ -123,9 +123,13 @@
   :init
   (ivy-rich-mode 1))
 
+(use-package undo-tree
+  :init
+  (global-undo-tree-mode 1))
+
 (use-package evil
   :init
-  (setq evil-undo-system 'undo-redo)
+  (setq evil-undo-system 'undo-tree)
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
