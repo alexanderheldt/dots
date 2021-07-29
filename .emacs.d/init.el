@@ -247,3 +247,12 @@
 
 (global-set-key (kbd "M-j") 'move-line-region-down)
 (global-set-key (kbd "M-k") 'move-line-region-up)
+
+;; Close tabs with :q
+(defun alex/close-tab (orig-fun &rest args)
+  "Close tab instead of calling ORIG-FUN if there is more than a single tab."
+  (if (cdr (tab-bar-tabs))
+      (tab-bar-close-tab)
+      (apply orig-fun args)))
+
+(advice-add #'evil-quit :around #'alex/close-tab)
