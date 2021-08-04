@@ -293,3 +293,13 @@
         company-minimum-prefix-length 1)
   :config
   (global-company-mode))
+
+;; Go
+(defun alex/lsp-go-on-save ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+
+(use-package go-mode
+  :hook (
+	 (go-mode . lsp)
+	 (go-mode . alex/lsp-go-on-save)))
