@@ -4,8 +4,8 @@ sxhkd &
 
 # Ensure that no `bspc` processes are
 # running before starting new ones
-#killall -q bspc
-#while pgrep -f bspc > /dev/null; do sleep 1; done
+killall -q bspc
+while pgrep -f bspc > /dev/null; do sleep 1; done
 
 bspc config remove_unplugged_monitors   true
 bspc config remove_disabled_monitors    true
