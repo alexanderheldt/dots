@@ -24,6 +24,12 @@
 .config/GIMP/
 .config/nvm/
 .config/obsidian/
+.config/JetBrains/
+.config/aconfmgr/
+.config/qmk/
+.config/protonvpn/
+.config/systemd/
+.config/Raspberry Pi/
 .emacs.d/elpa/
 .emacs.d/auto-save-list/
 
