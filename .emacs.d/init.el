@@ -1,3 +1,10 @@
+(add-hook 'emacs-startup-hook
+  (lambda ()
+    (setq gc-cons-threshold (* 100 1024 1024) ; 16mb
+          gc-cons-percentage 0.1)))
+
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+
 (setq inhibit-startup-message t)
 
 (scroll-bar-mode -1)        ; Disable visible scrollbar
@@ -256,3 +263,33 @@
       (apply orig-fun args)))
 
 (advice-add #'evil-quit :around #'alex/close-tab)
+
+;; LSP
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :init (setq lsp-keymap-prefix "C-c l")
+  :hook (lsp-enable-which-key-integration t)
+  :custom (lsp-headerline-breadcrumb-enable nil)
+)
+
+(use-package lsp-ui
+  :after lsp-mode
+  :hook (lsp-mode . lsp-ui-mode)
+  :custom
+  (lsp-ui-peek-always-show t)
+  (lsp-ui-sideline-show-hover t)
+  :config
+  (setq lsp-ui-doc-position 'bottom)
+)
+
+(use-package flycheck
+  :defer t
+  :hook (lsp-mode . flycheck-mode))
+
+(use-package company
+  :init
+  (setq company-idle-delay 0
+        company-echo-delay 0
+        company-minimum-prefix-length 1)
+  :config
+  (global-company-mode))
