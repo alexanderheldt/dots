@@ -264,6 +264,15 @@
 
 (advice-add #'evil-quit :around #'alex/close-tab)
 
+;; Magit
+(use-package magit
+  :custom
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+
+(alex/leader-keys
+  "g" '(:ignore t :which-key "git")
+  "gg" 'magit-status)
+
 ;; LSP
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
