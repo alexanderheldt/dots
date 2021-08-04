@@ -190,6 +190,8 @@
   (lambda ()
     (setq show-trailing-whitespace t)))
 
+(add-hook 'prog-mode-hook 'electric-pair-mode)
+
 ;; https://www.emacswiki.org/emacs/MoveLineRegion
 (defun move-line (n)
   "Move the current line up or down by N lines."
