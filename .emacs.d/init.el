@@ -81,7 +81,6 @@
     "," 'save-buffer))
 
 (use-package ivy
-  :diminish
   :bind (("C-s" . swiper)
 	 :map ivy-minibuffer-map
 	 ("TAB" . ivy-alt-done)
@@ -115,7 +114,6 @@
 
 (use-package which-key
   :init (which-key-mode)
-  :diminish which-key-mode
   :config
   (setq which-key-idle-delay 1))
 
