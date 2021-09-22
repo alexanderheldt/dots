@@ -179,7 +179,7 @@
   (setq org-log-done 'time)
   (setq org-cycle-separator-lines 1)
   (setq org-startup-folded 'content)
-  (setq org-agenda-files '("~/org"))
+  (setq org-agenda-files '("~/sync/org"))
 
   (require 'org-habit)
   (add-to-list 'org-modules 'org-habit)
