@@ -104,7 +104,3 @@ super + ctrl + shift + Print
 super + x
     ~/.scripts/spotify --pause; \
     slock
-
-# Wiki
-super + n
-    ~/.scripts/wiki
