@@ -30,6 +30,7 @@
 .config/protonvpn/
 .config/systemd/
 .config/Raspberry Pi/
+.config/Mullvad VPN/
 .emacs.d/elpa/
 .emacs.d/auto-save-list/
 

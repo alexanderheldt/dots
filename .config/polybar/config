@@ -18,7 +18,7 @@ font-0 = DejaVuSansMono Nerd Font:pixelsize=18;5
 
 modules-left = bspwm
 modules-center =
-modules-right = spotify bluetoothmenu bluetooth volume wlan protonvpn battery date
+modules-right = spotify bluetoothmenu bluetooth volume wlan mullvadvpn battery date
 
 ;tray-position = right
 ;tray-padding = 2
@@ -62,7 +62,7 @@ label-disconnected = 睊
 ramp-signal-0 = 
 ramp-signal-foreground = ${colors.foreground}
 
-[module/protonvpn]
+[module/mullvadvpn]
 type=custom/script
 
 interval = 1
@@ -70,8 +70,8 @@ interval = 1
 label = %output%
 label-foreground = ${colors.foreground}
 
-exec = ~/.scripts/pvpn --output
-click-right = ~/.scripts/pvpn --toggle
+exec = ~/.scripts/mullvadvpn --output
+click-right = ~/.scripts/mullvadvpn --toggle
 
 [module/volume]
 type=custom/script
