@@ -326,3 +326,12 @@
 
   :hook (rjsx-mode . lsp)
 )
+
+;; YAML
+(use-package yaml-mode
+  :mode (
+         ("\\.cf$" . yaml-mode)
+         ("\\.yml$" . yaml-mode)
+         ("\\.yaml$" . yaml-mode)
+        )
+)
