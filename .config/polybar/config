@@ -18,7 +18,7 @@ font-0 = DejaVuSansMono Nerd Font:pixelsize=18;5
 
 modules-left = bspwm
 modules-center =
-modules-right = spotify bluetooth volume wlan protonvpn battery date
+modules-right = spotify bluetoothmenu bluetooth volume wlan protonvpn battery date
 
 ;tray-position = right
 ;tray-padding = 2
@@ -133,11 +133,33 @@ interval = 1
 
 exec = ~/.scripts/bluetooth --output
 
-click-left = ~/.scripts/bluetooth --toggle-connection "38:18:4C:18:A4:6E"
+click-left = #bluetoothmenu.open.0
 click-right = ~/.scripts/bluetooth --toggle-power
 
 label = %output%
 label-foreground = ${colors.foreground}
+
+[module/bluetoothmenu]
+type = custom/menu
+
+label-open = ""
+expand-right = false
+label-separator = " | "
+
+menu-0-0 = WH-1000XME3
+menu-0-0-exec = #bluetoothmenu.open.1
+menu-0-1 = Trackpad
+menu-0-1-exec = #bluetoothmenu.open.2
+
+menu-1-0 = Connect WH1000XME3
+menu-1-0-exec = ~/.scripts/bluetooth --connect "38:18:4C:18:A4:6E"
+menu-1-1 = Disconnect WH1000XME3
+menu-1-1-exec = ~/.scripts/bluetooth --disconnect "38:18:4C:18:A4:6E"
+
+menu-2-0 = Connect Trackpad
+menu-2-0-exec = ~/.scripts/bluetooth --connect "A8:91:3D:E5:FE:38"
+menu-2-1 = Disconnect Trackpad
+menu-2-1-exec = ~/.scripts/bluetooth --disconnect "A8:91:3D:E5:FE:38"
 
 [module/spotify]
 type = custom/script
