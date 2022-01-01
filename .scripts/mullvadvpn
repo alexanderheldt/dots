@@ -15,8 +15,6 @@ status() {
 }
 
 output() {
-  CURRENT_STATUS=$(status)
-
   case $(status) in
     $STATUS_DISCONNECTED)
       echo "" ;;
@@ -34,13 +32,12 @@ output() {
 
 toggle() {
     CURRENT_STATUS=$(status)
-    echo $CURRENT_STATUS
 
     case "$CURRENT_STATUS" in
       $STATUS_DISCONNECTED)
-        mullvad connect ;;
+        mullvad connect && notify-send "Connected to VPN";;
       $STATUS_CONNECTED)
-        mullvad disconnect ;;
+        mullvad disconnect && notify-send "Disconnected from VPN";;
     esac
 }
 
