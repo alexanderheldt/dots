@@ -8,5 +8,3 @@
 [url "git@github.com:"]
     insteadOf = https://github.com/
 
-[includeIf "gitdir:~/code/work/bambuser/"]
-    path = ~/code/work/bambuser/.gitconfig
