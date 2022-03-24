@@ -344,3 +344,8 @@
    (set-face-attribute 'show-paren-match nil :weight 'extra-bold)
    (show-paren-mode 1))
 (add-hook 'prog-mode-hook 'my-show-paren-mode)
+
+(use-package diff-hl
+  :config
+  (setq diff-hl-side 'right)
+  (global-diff-hl-mode t))
