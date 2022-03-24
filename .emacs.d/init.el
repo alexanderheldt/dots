@@ -335,3 +335,12 @@
          ("\\.yaml$" . yaml-mode)
         )
 )
+
+(defun my-show-paren-mode ()
+   "Enables 'show-paren-mode'."
+   (setq show-paren-delay 0)
+   (set-face-background 'show-paren-match (face-background 'default))
+   (set-face-foreground 'show-paren-match "#def")
+   (set-face-attribute 'show-paren-match nil :weight 'extra-bold)
+   (show-paren-mode 1))
+(add-hook 'prog-mode-hook 'my-show-paren-mode)
