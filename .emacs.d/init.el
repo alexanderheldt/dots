@@ -336,6 +336,13 @@
         )
 )
 
+(use-package savehist
+  :init
+  (savehist-mode))
+
+(use-package orderless
+  :custom (completion-styles '(orderless)))
+
 (defun my-show-paren-mode ()
    "Enables 'show-paren-mode'."
    (setq show-paren-delay 0)
