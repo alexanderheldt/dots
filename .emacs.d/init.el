@@ -179,6 +179,7 @@
   (setq org-log-done 'time)
   (setq org-cycle-separator-lines 1)
   (setq org-startup-folded 'content)
+  (setq org-startup-indented t)
   (setq org-agenda-files '("~/sync/org"))
 
   (require 'org-habit)
