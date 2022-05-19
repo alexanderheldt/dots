@@ -12,6 +12,7 @@ dots=(
     .xinitrc
     .Xresources
     .zshrc
+    .zshenv
     .emacs.d
 )
 

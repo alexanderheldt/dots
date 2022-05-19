@@ -9,9 +9,6 @@ antibody bundle zsh-users/zsh-completions
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
-# Set config directory
-export XDG_CONFIG_HOME=$HOME/.config
-
 # Enable autocompletion
 autoload -Uz compinit
 typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
@@ -71,18 +68,11 @@ export GDK_DPI_SCALE=0.5
 # Use ripgrep for FZF
 export FZF_DEFAULT_COMMAND='rg --files --follow --hidden'
 
-export BROWSER='firefox-developer-edition'
 
-export EDITOR="nvim"
 alias vim="nvim"
 alias vi="nvim"
 alias n="nvim"
 alias ls="ls --color=auto"
-
-export GOPATH=$HOME/code/go
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:/usr/bin/go
-export PATH=$PATH:$HOME/.cargo/bin
 
 SPACESHIP_TIME_SHOW=true
 SPACESHIP_TIME_PREFIX=''
