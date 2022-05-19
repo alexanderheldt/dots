@@ -68,6 +68,8 @@ export GDK_DPI_SCALE=0.5
 # Use ripgrep for FZF
 export FZF_DEFAULT_COMMAND='rg --files --follow --hidden'
 
+# Start pyenv every time a shell is opened
+eval "$(pyenv init --path)"
 
 alias vim="nvim"
 alias vi="nvim"
