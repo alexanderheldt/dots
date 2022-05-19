@@ -1,0 +1,410 @@
+#+BEGIN_SRC emacs-lisp
+#+END_SRC
+
+* Look and feel
+** Disable startup message
+#+BEGIN_SRC emacs-lisp
+  (setq inhibit-startup-message t)
+#+END_SRC
+** Don't store custom settings
+#+BEGIN_SRC emacs-lisp
+  (setq custom-file null-device)
+#+END_SRC
+** Font
+#+BEGIN_SRC emacs-lisp
+  (set-face-attribute 'default nil :font "DejaVuSansMono Nerd Font" :height 120)
+#+END_SRC
+** Icons
+#+BEGIN_SRC emacs-lisp
+  ;; NOTE: The first time this configuration is loaded on a new machine, you'll
+  ;; need to run the following command interactively so that mode line icons
+  ;; display correctly:
+  ;;
+  ;; M-x all-the-icons-install-fonts
+
+  (use-package all-the-icons)
+#+END_SRC
+** Modeline
+#+BEGIN_SRC emacs-lisp
+  (use-package doom-modeline
+    :init (doom-modeline-mode 1)
+    :custom ((doom-modeline-height 15)))
+#+END_SRC
+** Theme
+#+BEGIN_SRC emacs-lisp
+  (use-package doom-themes
+    :init (load-theme 'doom-dracula t))
+#+END_SRC
+** Disable the menu bar
+#+BEGIN_SRC emacs-lisp
+  (menu-bar-mode -1)
+#+END_SRC
+** Disable the tool bar
+#+BEGIN_SRC emacs-lisp
+  (tool-bar-mode -1)
+#+END_SRC
+** Disable the scroll bar
+#+BEGIN_SRC emacs-lisp
+  (scroll-bar-mode -1)
+#+END_SRC
+** Disable tool tips
+#+BEGIN_SRC emacs-lisp
+  (tooltip-mode -1)
+#+END_SRC
+** Disable scroll bar
+#+BEGIN_SRC emacs-lisp
+  (scroll-bar-mode -1)
+#+END_SRC
+** Add margin left of buffers
+#+BEGIN_SRC emacs-lisp
+  (set-fringe-mode 10)
+#+END_SRC
+** Faster "confirm kill"
+#+BEGIN_SRC emacs-lisp
+  (setq confirm-kill-emacs 'y-or-n-p)
+#+END_SRC
+** Use ESC to quit prompts
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+#+END_SRC
+** Enable column numbers
+#+BEGIN_SRC emacs-lisp
+  (column-number-mode)
+#+END_SRC
+** Enable line numbers
+#+BEGIN_SRC emacs-lisp
+  (global-display-line-numbers-mode t)
+  (setq display-line-numbers-width-start t)
+#+END_SRC
+** Show trailing whitespace (when programming and in org-mode)
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'prog-mode-hook
+  (lambda ()
+    (setq show-trailing-whitespace t)))
+
+  (add-hook 'org-mode-hook
+  (lambda ()
+    (setq show-trailing-whitespace t)))
+#+END_SRC
+** Auto-insert matching parenthesis (when programming)
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'prog-mode-hook 'electric-pair-mode)
+#+END_SRC
+** Hilight parethesis (when programming)
+#+BEGIN_SRC emacs-lisp
+  (defun my-show-paren-mode ()
+    "Enables 'show-paren-mode'."
+    (setq show-paren-delay 0)
+    (set-face-background 'show-paren-match (face-background 'default))
+    (set-face-foreground 'show-paren-match "#def")
+    (set-face-attribute 'show-paren-match nil :weight 'extra-bold)
+    (show-paren-mode 1))
+
+  (add-hook 'prog-mode-hook 'my-show-paren-mode)
+#+END_SRC
+
+** Close tabs with :q
+#+BEGIN_SRC emacs-lisp
+  (defun alex/close-tab (orig-fun &rest args)
+    "Close tab instead of calling ORIG-FUN if there is more than a single tab."
+    (if (cdr (tab-bar-tabs))
+        (tab-bar-close-tab)
+        (apply orig-fun args)))
+
+  (advice-add #'evil-quit :around #'alex/close-tab)
+#+END_SRC
+
+* Keep .emacs.d tidy
+** Don't create backup and autosave files
+#+BEGIN_SRC emacs-lisp
+  (setq backup-inhibited t
+        make-backup-files nil
+        create-lockfiles nil
+        auto-save-default nil)
+#+END_SRC
+** Set temp directory
+#+BEGIN_SRC emacs-lisp
+  (setq temporary-file-directory "~/.emacs.d/tmp/")
+  (unless (file-exists-p "~/.emacs.d/tmp")
+    (make-directory "~/.emacs.d/tmp"))
+#+END_SRC
+
+* Evil
+#+BEGIN_SRC emacs-lisp
+  (use-package evil
+    :init
+    (setq evil-undo-system 'undo-tree)
+    (setq evil-want-integration t)
+    (setq evil-want-keybinding nil)
+    (setq evil-want-C-u-scroll t)
+    (setq evil-want-C-i-jump nil)
+    :config
+    (evil-mode 1)
+
+    ;; Use visual line motions even outside of visual-line-mode buffers
+    (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+    (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+
+    (evil-set-initial-state 'messages-buffer-mode 'normal)
+    (evil-set-initial-state 'dashboard-mode 'normal))
+
+  (use-package evil-surround
+    :config (global-evil-surround-mode))
+
+  (use-package evil-collection
+    :after evil
+    :config
+    (evil-collection-init))
+#+END_SRC
+* Tabs
+** Enable tabs
+#+BEGIN_SRC emacs-lisp
+  (tab-bar-mode)
+#+END_SRC
+** Remove tab buttons
+#+BEGIN_SRC emacs-lisp
+  (setq tab-bar-close-button-show nil)
+  (setq tab-bar-new-button-show nil)
+#+END_SRC
+* Which-key
+#+BEGIN_SRC emacs-lisp
+  (use-package which-key
+    :init (which-key-mode)
+    :config
+    (setq which-key-idle-delay 1))
+#+END_SRC
+
+* Undo tree
+#+BEGIN_SRC emacs-lisp
+  (use-package undo-tree
+    :init
+    (global-undo-tree-mode 1))
+#+END_SRC
+* Org-mode
+#+BEGIN_SRC emacs-lisp
+  (use-package org
+  :hook (org-mode . visual-line-mode) ;; wrap lines
+  :config
+  (setq org-ellipsis " ▾")
+  (setq org-agenda-start-with-log-mode t)
+  (setq org-log-done 'time)
+  (setq org-cycle-separator-lines 1)
+  (setq org-startup-folded 'content)
+  (setq org-startup-indented t)
+  (setq org-agenda-files '("~/sync/org"))
+#+END_SRC
+** Org-habit
+#+BEGIN_SRC emacs-lisp
+  (require 'org-habit)
+  (add-to-list 'org-modules 'org-habit)
+  (setq org-habit-graph-column 60))
+#+END_SRC
+* Magit
+#+BEGIN_SRC emacs-lisp
+  (use-package magit
+    :custom
+    (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+#+END_SRC
+* Diff-hl (git diff in margin)
+#+BEGIN_SRC emacs-lisp
+  (use-package diff-hl
+    :config
+    (setq diff-hl-side 'right)
+    (global-diff-hl-mode t))
+#+END_SRC
+* vterm
+#+BEGIN_SRC emacs-lisp
+  (use-package vterm
+    :commands vterm
+    :config
+    (setq vterm-shell "zsh"
+          vterm-max-scrollback 10000))
+#+END_SRC
+* Magit
+#+BEGIN_SRC emacs-lisp
+  (use-package magit
+    :custom
+    (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+#+END_SRC
+* Lsp-mode
+#+BEGIN_SRC emacs-lisp
+  (use-package lsp-mode
+    :commands (lsp lsp-deferred)
+    :init (setq lsp-keymap-prefix "C-c l")
+    :hook ((lsp-enable-which-key-integration t)
+           (python-mode . lsp)
+           (go-mode . (lambda()
+                        (lsp-register-custom-settings
+                         '(("gopls.buildFlags" ["-tags=unit,integration"]))))))
+    :custom
+    (lsp-headerline-breadcrumb-enable nil)
+    (lsp-enable-snippet nil))
+#+END_SRC
+** Lsp-ui
+#+BEGIN_SRC emacs-lisp
+  (use-package lsp-ui
+    :after lsp-mode
+    :hook (lsp-mode . lsp-ui-mode)
+    :custom
+    (lsp-ui-peek-always-show t)
+    (lsp-ui-sideline-show-hover nil)
+    :config
+    (setq lsp-ui-doc-position 'bottom))
+#+END_SRC
+* Flycheck
+#+BEGIN_SRC emacs-lisp
+  (use-package flycheck
+  :defer t
+  :hook (lsp-mode . flycheck-mode))
+#+END_SRC
+
+* Programming
+** Go
+#+BEGIN_SRC emacs-lisp
+  (defun alex/lsp-go-on-save ()
+    (add-hook 'before-save-hook #'lsp-format-buffer t t)
+    (add-hook 'before-save-hook #'lsp-organize-imports t t))
+
+  (use-package go-mode
+    :hook ((go-mode . lsp)
+           (go-mode . alex/lsp-go-on-save)
+           (go-mode . (lambda() (setq tab-width 4)))))
+
+#+END_SRC
+** Javascript
+#+BEGIN_SRC emacs-lisp
+  (use-package rjsx-mode
+    :mode ("\\.js\\'"
+           "\\.jsx\\'")
+    :config
+    (setq js2-mode-show-parse-errors nil
+          js2-mode-show-strict-warnings nil
+          js2-basic-offset 2
+          js-indent-level 2)
+
+    :hook (rjsx-mode . lsp))
+#+END_SRC
+** YAML
+#+BEGIN_SRC emacs-lisp
+  (use-package yaml-mode
+    :mode (
+           ("\\.cf$" . yaml-mode)
+           ("\\.yml$" . yaml-mode)
+           ("\\.yaml$" . yaml-mode)))
+#+END_SRC
+
+
+* Key bindings
+** Use General
+https://github.com/noctuid/general is helpful to setup general keybinding menues.
+
+#+BEGIN_SRC emacs-lisp
+    (use-package general
+      :config
+      (general-create-definer alex/leader-keys
+        :keymaps '(normal insert visual emacs)
+        :prefix ","
+        :global-prefix "C-SPC"))
+#+END_SRC
+*** Save buffer with ,
+#+BEGIN_SRC emacs-lisp
+  (alex/leader-keys
+    "," '(save-buffer :save-buffer "save"))
+#+END_SRC
+*** Text scaling
+Using https://github.com/abo-abo/hydra to make it easy to repeat commands
+#+BEGIN_SRC emacs-lisp
+  (use-package hydra)
+
+  (defhydra hydra-text-scale (:timeout 4)
+    "scale text"
+    ("k" text-scale-increase "in")
+    ("j" text-scale-decrease "out")
+    ("r" (text-scale-adjust 0) "reset")
+    ("esc" nil "finished" :exit t))
+
+  (alex/leader-keys
+    "t" '(:ignore t :which-key "text")
+    "ts" '(hydra-text-scale/body :which-key "scale text"))
+#+END_SRC
+*** Org-mode
+#+BEGIN_SRC emacs-lisp
+  (alex/leader-keys
+    "o" '(:ignore t :which-key "org")
+    "oa" '(org-agenda :which-key "agenda"))
+#+END_SRC
+*** Cleanup whitespace
+#+BEGIN_SRC emacs-lisp
+  (alex/leader-keys
+    "w" '(whitespace-cleanup :which-key "whitespace cleanup"))
+#+END_SRC
+*** LSP
+#+BEGIN_SRC emacs-lisp
+  (alex/leader-keys
+    "l" '(:ignore t :which-key "lsp")
+    "ls" '(xref-find-definitions-other-window :which-key "open def in other window"))
+#+END_SRC
+*** Magit
+#+BEGIN_SRC emacs-lisp
+  (alex/leader-keys
+    "g" '(:ignore t :which-key "git")
+    "gg" 'magit-status)
+#+END_SRC
+** Moving lines
+Inspired by https://www.emacswiki.org/emacs/MoveLineRegion
+
+#+BEGIN_SRC emacs-lisp
+  (defun move-line (n)
+    "Move the current line up or down by N lines."
+    (interactive "p")
+    (setq col (current-column))
+    (beginning-of-line) (setq start (point))
+    (end-of-line) (forward-char) (setq end (point))
+    (let ((line-text (delete-and-extract-region start end)))
+      (forward-line n)
+      (insert line-text)
+      ;; restore point to original column in moved line
+      (forward-line -1)
+      (forward-char col)))
+
+  (defun move-line-up (n)
+    "Move the current line up by N lines."
+    (interactive "p")
+    (move-line (if (null n) -1 (- n))))
+
+  (defun move-line-down (n)
+    "Move the current line down by N lines."
+    (interactive "p")
+    (move-line (if (null n) 1 n)))
+
+  (defun move-region (start end n)
+    "Move the current region up or down by N lines."
+    (interactive "r\np")
+    (let ((line-text (delete-and-extract-region start end)))
+      (forward-line n)
+      (let ((start (point)))
+        (insert line-text)
+        (setq deactivate-mark nil)
+        (set-mark start))))
+
+  (defun move-region-up (start end n)
+    "Move the current line up by N lines."
+    (interactive "r\np")
+    (move-region start end (if (null n) -1 (- n))))
+
+  (defun move-region-down (start end n)
+    "Move the current line down by N lines."
+    (interactive "r\np")
+    (move-region start end (if (null n) 1 n)))
+
+  (defun move-line-region-up (&optional start end n)
+    (interactive "r\np")
+    (if (use-region-p) (move-region-up start end n) (move-line-up n)))
+
+  (defun move-line-region-down (&optional start end n)
+    (interactive "r\np")
+    (if (use-region-p) (move-region-down start end n) (move-line-down n)))
+
+  (global-set-key (kbd "M-j") 'move-line-region-down)
+  (global-set-key (kbd "M-k") 'move-line-region-up)
+#+END_SRC
