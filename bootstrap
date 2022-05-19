@@ -5,7 +5,6 @@ dots=(
     .screenlayout
     .scripts
     .bash_profile
-    .bashrc
     .gitconfig
     .profile
     .tmux.conf
