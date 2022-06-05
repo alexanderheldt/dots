@@ -292,7 +292,11 @@
            ("\\.yml$" . yaml-mode)
            ("\\.yaml$" . yaml-mode)))
 #+END_SRC
-
+** Nix
+#+BEGIN_SRC emacs-lisp
+   (use-package nix-mode
+    :mode "\\.nix$")
+#+END_SRC
 
 * Key bindings
 ** Use General
