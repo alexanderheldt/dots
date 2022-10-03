@@ -102,7 +102,24 @@
 
   (add-hook 'prog-mode-hook 'my-show-paren-mode)
 #+END_SRC
+** Calendar
+*** Show week numbers
+#+BEGIN_SRC emacs-lisp
+  (setq calendar-intermonth-text
+        '(propertize
+          (format "%2d"
+                  (car
+                   (calendar-iso-from-absolute
+                    (calendar-absolute-from-gregorian (list month day year)))))
+          'font-lock-face 'calendar-iso-week-face))
 
+    (setq calendar-intermonth-header
+          (propertize "Wk" 'font-lock-face 'font-lock-keyword-face))
+#+END_SRC
+*** Begin week with monday
+#+BEGIN_SRC emacs-lisp
+  (setq calendar-week-start-day 1)
+#+END_SRC
 ** Close tabs with :q
 #+BEGIN_SRC emacs-lisp
   (defun alex/close-tab (orig-fun &rest args)
