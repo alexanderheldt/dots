@@ -257,6 +257,15 @@
     (lsp-headerline-breadcrumb-enable nil)
     (lsp-enable-snippet nil))
 #+END_SRC
+
+** Auto-save after applied edits (like lsp-rename)
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'lsp-after-apply-edits-hook
+            (lambda (operation)
+              (when (eq operation 'rename)
+                (save-buffer))))
+#+END_SRC
+
 ** Lsp-ui
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-ui
