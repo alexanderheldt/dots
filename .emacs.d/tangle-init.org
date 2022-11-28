@@ -130,6 +130,12 @@
 
   (advice-add #'evil-quit :around #'alex/close-tab)
 #+END_SRC
+** Orderless completion
+Allow orderless completion, e.g. `org mode` and `mode org` return same result
+#+BEGIN_SRC emacs-lisp
+  (use-package orderless
+    :custom (completion-styles '(orderless)))
+#+END_SRC
 
 * Keep .emacs.d tidy
 ** Don't create backup and autosave files
@@ -189,6 +195,14 @@
     :init (which-key-mode)
     :config
     (setq which-key-idle-delay 1))
+#+END_SRC
+* Buffer history
+`savehist` saves buffer history
+#+BEGIN_SRC emacs-lisp
+  (use-package savehist
+    :init
+    (savehist-mode))
+
 #+END_SRC
 
 * Undo tree
@@ -295,7 +309,6 @@
     :hook ((go-mode . lsp)
            (go-mode . alex/lsp-go-on-save)
            (go-mode . (lambda() (setq tab-width 4)))))
-
 #+END_SRC
 ** Javascript
 #+BEGIN_SRC emacs-lisp

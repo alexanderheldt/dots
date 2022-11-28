@@ -104,25 +104,9 @@
   :init
   (vertico-mode))
 
-(use-package savehist
-  :init
-  (savehist-mode))
-
-(use-package orderless
-  :custom (completion-styles '(orderless)))
-
 (use-package consult
-  :general
-  ("M-y" 'consult-yank-from-kill-ring
-   "C-x b" 'consult-buffer))
-
-(use-package affe
-  :after
-  consult
-  :config
-  ;; Manual preview key for `affe-grep'
-  (consult-customize affe-grep :preview-key (kbd "M-p")))
-
+  :bind
+  ("C-x b" . 'consult-buffer))
 
 (org-babel-load-file (expand-file-name "~/.emacs.d/tangle-init.org"))
 
