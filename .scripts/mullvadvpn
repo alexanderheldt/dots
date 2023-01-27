@@ -10,7 +10,7 @@ STATUS_CONNECTING="Connecting"
 STATUS_CONNECTED="Connected"
 
 status() {
-  STATUS=$(mullvad status | awk '{print $3}')
+  STATUS=$(mullvad status | awk '{print $1}')
   echo $STATUS
 }
 
