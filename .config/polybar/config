@@ -18,7 +18,7 @@ font-0 = DejaVuSansMono Nerd Font:pixelsize=18;5
 
 modules-left = bspwm
 modules-center =
-modules-right = spotify bluetoothmenu bluetooth volume wlan mullvadvpn battery date
+modules-right = spotify bluetoothmenu bluetooth volume notifications wlan mullvadvpn battery date
 
 ;tray-position = right
 ;tray-padding = 2
@@ -84,6 +84,17 @@ click-right = exec pavucontrol
 click-left = ~/.scripts/pavolume --togmute
 scroll-up = ~/.scripts/pavolume --up
 scroll-down = ~/.scripts/pavolume --down
+
+[module/notifications]
+type=custom/script
+
+interval = 1
+
+label = %output%
+label-foreground = ${colors.foreground}
+
+exec = ~/.scripts/dunst --output
+click-right = ~/.scripts/dunst --toggle
 
 [module/date]
 type = internal/date

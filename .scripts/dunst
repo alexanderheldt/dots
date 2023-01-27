@@ -1,0 +1,19 @@
+#!/bin/sh
+
+output() {
+    IS_PAUSED=$(dunstctl is-paused)
+    if [ "$IS_PAUSED" = "false" ]; then
+	echo "ﮠ"
+    else
+	echo "ﮡ"
+    fi
+}
+
+case "$1" in
+    --output)
+    output
+    ;;
+    --toggle)
+    dunstctl set-paused toggle
+    ;;
+esac
