@@ -10,16 +10,11 @@ output() {
     else
         ICON=""
 
-        PAIRED_DEVICES=$(bluetoothctl paired-devices | grep Device | cut -d ' ' -f 2)
+        PAIRED_DEVICES=$(bluetoothctl devices | grep Device | cut -d ' ' -f 2)
+	CONNECTED_DEVICES=$(bluetoothctl devices Connected | cut -d ' ' -f 3)
 
-        for d in ${PAIRED_DEVICES[*]}; do
-            DEVICE_INFO=$(bluetoothctl info "$d")
-            DEVICE_CONNECTED=$(echo $DEVICE_INFO | grep "Connected: yes")
-
-            if [ ! -z "$DEVICE_CONNECTED" ]; then
-                DEVICE_ALIAS=$(echo "$DEVICE_INFO" | grep "Alias" | cut -d ' ' -f 2-)
-                OUTPUT="$OUTPUT $DEVICE_ALIAS"
-            fi
+        for d in ${CONNECTED_DEVICES=[*]}; do
+            OUTPUT="$OUTPUT $d"
         done
     fi
 
