@@ -50,7 +50,7 @@ bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 
 # Fix backspace bug when switching modes
-bindkey '^?' backward-delete-char
+bindkey -v '^?' backward-delete-char
 
 autoload -U select-word-style
 select-word-style bash
