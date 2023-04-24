@@ -83,9 +83,9 @@ SPACESHIP_CHAR_SYMBOL=''
 
 SPACESHIP_PROMPT_ORDER=(
   #time          # Time stamps section
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
+  user           # Username section
+  dir            # Current directory section
+  host           # Hostname section
   git            # Git section (git_branch + git_status)
   #hg            # Mercurial section (hg_branch  + hg_status)
   #package       # Package version
@@ -100,7 +100,7 @@ SPACESHIP_PROMPT_ORDER=(
   #haskell       # Haskell Stack section
   #julia         # Julia section
   #docker        # Docker section
-  aws           # Amazon Web Services section
+  #aws           # Amazon Web Services section
   #venv          # virtualenv section
   #conda         # conda virtualenv section
   #pyenv         # Pyenv section
@@ -114,14 +114,14 @@ SPACESHIP_PROMPT_ORDER=(
   #vi_mode       # Vi-mode indicator
   #jobs          # Background jobs indicator
   #exit_code     # Exit code section
-  char          # Prompt character
+  char           # Prompt character
 )
 
 SPACESHIP_RPROMPT_ORDER=(
     exec_time     # Execution time
     jobs          # Background jobs indicator
     exit_code     # Exit code section
-    time          # Time stamps section
+    #time         # Time stamps section
 )
 
 autoload -U promptinit; promptinit
