@@ -86,6 +86,7 @@ SPACESHIP_PROMPT_ORDER=(
   user          # Username section
   dir           # Current directory section
   host          # Hostname section
+  git            # Git section (git_branch + git_status)
   #hg            # Mercurial section (hg_branch  + hg_status)
   #package       # Package version
   #node          # Node.js section
@@ -118,7 +119,6 @@ SPACESHIP_PROMPT_ORDER=(
 
 SPACESHIP_RPROMPT_ORDER=(
     exec_time     # Execution time
-    git           # Git section (git_branch + git_status)
     jobs          # Background jobs indicator
     exit_code     # Exit code section
     time          # Time stamps section
